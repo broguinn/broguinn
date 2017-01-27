@@ -15,6 +15,13 @@ I was benchmark testing [StatsD](https://github.com/etsy/statsd) on my VM this w
 ```
 Which essentially says, “For all users, set soft and hard limits for the number of processes and number of open files to unlimited”.
 
+**edit:** from [@stuntbeard](https://twitter.com/stuntbeard), you can use a hyphen (-) instead of 'soft' and 'hard' to refer to both cases:
+
+```
+*               -       nofile           unlimited
+*               -       nproc            unlimited
+```
+
 When you do this, your VM stops accepting all new shell instances, meaning you can't SSH into your machine. It also means that trying to run a remote command, like, say `ssh boguinn 'rm /usr/security/limits.d/limits.conf'` in the vain hope of rescuing your machine is not possible.
 
 Why? Because the Linux kernel has a [hard upper limit](http://four-eyes.net/2012/09/etcsecuritylimits-conf-nofile-absolute-maximum/) of 1048576 (or 1024<sup>2</sup>) open files. And because I optimistically[^opt] applied that to all users and groups by providing `*` in the first column, there were no exempt users that could correct the mistake.
