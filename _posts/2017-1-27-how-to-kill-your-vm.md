@@ -31,7 +31,7 @@ Later that day I pinged other engineers about if I could have done anything diff
 
 Now that I had a completely fresh VM to re-provision, I realized that I could really use a dotfiles repo. This is a collection of shell scripts and global conf files you keep in a VCS so that whenever you enter a new machine, it will automatically be set up the way you like, with the correct shell interpreter, binaries, and themes.
 
-I found [nicksp's dotfiles](https://github.com/nicksp/dotfiles), which includes [sensible OS X defaults](https://github.com/nicksp/dotfiles/blob/master/osx/set-defaults.sh), (as well as support for oh-my-zsh, npm, and a nifty powershell-based theme) via the [Github dotfiles page](github.dotfies.io). However, it includes several commands and settings that don't work on my CENTOS 7-based VM, and I wanted the opportunity to configure the aesthetics of the theme.
+I found [nicksp's dotfiles](https://github.com/nicksp/dotfiles), which includes [sensible OS X defaults](https://github.com/nicksp/dotfiles/blob/master/osx/set-defaults.sh), (as well as support for oh-my-zsh, npm, and a nifty powershell-based theme) via the [Github dotfiles page](http://github.dotfies.io). However, it includes several commands and settings that don't work on my CENTOS 7-based VM, and I wanted the opportunity to configure the aesthetics of the theme.
 
 So, I forked it! You can check out my own [dotfiles](https://github.com/broguinn/dotfiles), and run it on most *NIX systems with `./setup-centos.sh`. Fork it, customize away, and worry (less) about borking your machine.
 
