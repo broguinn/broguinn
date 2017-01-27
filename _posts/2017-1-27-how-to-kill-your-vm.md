@@ -27,7 +27,7 @@ With sunken head I trudged back to my desk, only to discover that *I still had a
 
 ## An Ounce of Prevention
 
-Later that day I pinged the fleet team, which maintains VMs, about if I could have done anything differently. According to them, it might have been possible to salvage the machine by using `virsh` to get into the machine without loading limits.conf. Who knew!
+Later that day I pinged other engineers about if I could have done anything differently. According to them, it might have been possible to salvage the machine by using `virsh` to get into the machine without loading limits.conf. Who knew!
 
 Now that I had a completely fresh VM to re-provision, I realized that I could really use a dotfiles repo. This is a collection of shell scripts and global conf files you keep in VCS so that whenever you enter a new machine, it will automatically be set up the way you like, with the correct shell interpreter, binaries, and themes.
 
@@ -41,7 +41,7 @@ So, I forked it! You can check out my own [dotfiles](https://github.com/broguinn
 
 1. Set limits.conf overrides to a specific test user
 2. Setting nofile to anything higher than 1048576, including `unlimited`, locks your machine
-3. Talk to Fleet for VM help, not Corp IT, as they can possibly `virsh` into a locked machine
+3. Talk to more people about solutions before making an irrevertable change
 4. Check all your iterm windows for forgotten open SSH tunnels :cry:
 5. Keep a dotfiles collection in Github
 
