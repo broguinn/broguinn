@@ -2,12 +2,11 @@
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
-relative_permalinks: true
 
 # Setup
-title:               Poole
-tagline:             The Jekyll Butler
-url:                 http://getpoole.com
+title:               Broguinn
+tagline:             Code and Crafts
+url:                 broguinn.github.io
 paginate:            1
 baseurl:             ""
 
@@ -20,11 +19,16 @@ sass:
 
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Braden O'Guinn
+  url:               https://twitter.com/broguinn
+  email:             bgouinn@gmail.com
 
 # Custom vars
 version:             2.0.0
 github:
-  repo:              https://github.com/poole/poole
+  repo:              https://github.com/broguinn/broguinn
+
+# Gems
+gems:
+  - jekyll-paginate
+  - jekyll-gist
