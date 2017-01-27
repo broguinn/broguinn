@@ -5,7 +5,7 @@ date:   2017-1-27
 categories: linux programming
 ---
 
-I was benchmark testing StatsD on my VM this week, and was seeing 40% package drop rate right out of the box. So, I increased my UNIX limits by creating a `/usr/security/limits.d/limits.conf` as such:
+I was benchmark testing StatsD on my VM this week<sup>[1](#myfootnote1)</sup>, and was seeing 40% package drop rate right out of the box. So, I increased my UNIX limits by creating a `/usr/security/limits.d/limits.conf` as such:
 
 ```
 *               soft    nofile           unlimited
@@ -17,7 +17,7 @@ Which essentially says, “For all users, set soft and hard limits for the numbe
 
 When you do this, your VM stops accepting all new shell instances, meaning you can't SSH into your machine. It also means that trying to run a remote command, like, say `ssh boguinn 'rm /usr/security/limits.d/limits.conf'` in the vain hope of rescuing your machine is not possible.
 
-Why? Because the Linux kernel has a [hard upper limit](http://four-eyes.net/2012/09/etcsecuritylimits-conf-nofile-absolute-maximum/) of 1048576 (or 1024^2^) open files. And because I [optimistically](http://www.etymonline.com/index.php?term=foolish&allowed_in_frame=0) applied that to all users and groups by providing `*` in the first column, there were no exempt users that could correct the mistake.
+Why? Because the Linux kernel has a [hard upper limit](http://four-eyes.net/2012/09/etcsecuritylimits-conf-nofile-absolute-maximum/) of 1048576 (or 1024<sup>2</sup>) open files. And because I optimistically<sup>[2](#myfootnote2)</sup> applied that to all users and groups by providing `*` in the first column, there were no exempt users that could correct the mistake.
 
 ## How to Fix It
 
@@ -44,3 +44,8 @@ So, I forked it! You can check out my own [dotfiles](https://github.com/broguinn
 3. Talk to Fleet for VM help, not Corp IT, as they can possibly `virsh` into a locked machine
 4. Check all your iterm windows for forgotten open SSH tunnels :cry:
 5. Keep a dotfiles collection in Github
+
+#### footnotes
+
+<a name="myfootnote1">1</a>: A long story and another blog post in its own right<br>
+<a name="myfootnote2">2</a>: Foolishly
