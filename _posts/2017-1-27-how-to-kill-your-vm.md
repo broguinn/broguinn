@@ -17,7 +17,7 @@ Which essentially says, “For all users, set soft and hard limits for the numbe
 
 When you do this, your VM stops accepting all new shell instances, meaning you can't SSH into your machine. It also means that trying to run a remote command, like, say `ssh boguinn 'rm /usr/security/limits.d/limits.conf'` in the vain hope of rescuing your machine is not possible.
 
-Why? Because the Linux kernel has a [hard upper limit](http://four-eyes.net/2012/09/etcsecuritylimits-conf-nofile-absolute-maximum/) of 1048576 (or 1024<sup>2</sup>) open files. And because I optimistically<sup>[0](#myfootnote3)</sup> applied that to all users and groups by providing `*` in the first column, there were no exempt users that could correct the mistake.
+Why? Because the Linux kernel has a [hard upper limit](http://four-eyes.net/2012/09/etcsecuritylimits-conf-nofile-absolute-maximum/) of 1048576 (or 1024<sup>2</sup>) open files. And because I optimistically[^opt] applied that to all users and groups by providing `*` in the first column, there were no exempt users that could correct the mistake.
 
 ## How to Fix It
 
@@ -27,7 +27,7 @@ With sunken head I trudged back to my desk, only to discover that *I still had a
 
 ## An Ounce of Prevention
 
-Later that day I pinged other engineers about if I could have done anything differently. According to them, it might have been possible to salvage the machine by using `virsh`<sup>[1](#myfootnote4)</sup> to get into the machine without loading limits.conf. Who knew!
+Later that day I pinged other engineers about if I could have done anything differently. According to them, it might have been possible to salvage the machine by using `virsh`[^virsh] to get into the machine without loading limits.conf. Who knew!
 
 Now that I had a completely fresh VM to re-provision, I realized that I could really use a dotfiles repo. This is a collection of shell scripts and global conf files you keep in a VCS so that whenever you enter a new machine, it will automatically be set up the way you like, with the correct shell interpreter, binaries, and themes.
 
@@ -47,5 +47,6 @@ So, I forked it! You can check out my own [dotfiles](https://github.com/broguinn
 
 #### footnotes
 
-<a name="myfootnote3">0</a>: Foolishly<br>
-<a name="myfootnote4">1</a>: Which can be found [here](https://www.centos.org/docs/5/html/5.2/Virtualization/chap-Virtualization-Managing_guests_with_virsh.html)<br>
+[^opt]: Foolishly
+[^virsh]: Which can be found [here](https://www.centos.org/docs/5/html/5.2/Virtualization/chap-Virtualization-Managing_guests_with_virsh.html)
+
