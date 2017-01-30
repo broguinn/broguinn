@@ -24,7 +24,11 @@ Which essentially says, “For all users, set soft and hard limits for the numbe
 
 When you do this, your VM stops accepting all new shell instances, meaning you can't SSH into your machine. It also means that trying to run a remote command, like, say `ssh boguinn 'rm /usr/security/limits.d/limits.conf'` in the vain hope of rescuing your machine is not possible.
 
-Why? Because the Linux kernel has a [hard upper limit](http://four-eyes.net/2012/09/etcsecuritylimits-conf-nofile-absolute-maximum/) of 1048576 (or 1024<sup>2</sup>) open files. And because I optimistically[^opt] applied that to all users and groups by providing `*` in the first column, there were no exempt users that could correct the mistake.
+Why? Because the Linux kernel has a [hard upper limit](http://four-eyes.net/2012/09/etcsecuritylimits-conf-nofile-absolute-maximum/) of 1048576 (or 1024<sup>2</sup>) open files. And from [Stack Overflow](http://stackoverflow.com/questions/1212925/on-linux-set-maximum-open-files-to-unlimited-possible#answer-1213069):
+
+> RHEL 5 has a maximum value of 1048576 (220) for this limit (`NR_OPEN` in `/usr/include/linux/fs.h`), and will not accept any larger value including infinity, even for root. So on RHEL 5 you can use this value in `/etc/security/limits.conf` and that is as close as you are going to get to infinity.
+
+And because I optimistically[^opt] applied that to all users and groups by providing `*` in the first column, there were no exempt users that could correct the mistake.
 
 ## How to Fix It
 
